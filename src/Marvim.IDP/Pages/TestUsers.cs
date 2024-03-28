@@ -22,16 +22,17 @@ public static class TestUsers
                 postal_code = "69118",
                 country = "Germany"
             };
-                
+
             return new List<TestUser>
             {
                 new TestUser
                 {
                     SubjectId = "1",
-                    Username = "alice",
-                    Password = "alice",
-                    Claims =
+                    Username = "ali",
+                    Password = "ali",
+                    Claims = new List<Claim>()
                     {
+                        new Claim("role","FreeUser"),
                         new Claim(JwtClaimTypes.Name, "Alice Smith"),
                         new Claim(JwtClaimTypes.GivenName, "Alice"),
                         new Claim(JwtClaimTypes.FamilyName, "Smith"),
@@ -46,8 +47,9 @@ public static class TestUsers
                     SubjectId = "2",
                     Username = "bob",
                     Password = "bob",
-                    Claims =
+                    Claims = new List<Claim>()
                     {
+                        new Claim("role","PayingUser"),
                         new Claim(JwtClaimTypes.Name, "Bob Smith"),
                         new Claim(JwtClaimTypes.GivenName, "Bob"),
                         new Claim(JwtClaimTypes.FamilyName, "Smith"),
