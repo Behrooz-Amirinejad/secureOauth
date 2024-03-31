@@ -15,5 +15,10 @@ namespace ImageGallery.Client.Controllers
             await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
             //return RedirectToAction("Index", "Gallery");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

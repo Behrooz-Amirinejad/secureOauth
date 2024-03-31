@@ -26,7 +26,10 @@ builder.Services.AddAuthentication(opt =>
         opt.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         opt.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
     })
-    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
+    {
+        opt.AccessDeniedPath = "/Authentication/AccessDenied";
+    })
     .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, opt =>
     {
         opt.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -44,7 +47,7 @@ builder.Services.AddAuthentication(opt =>
         opt.ClaimActions.DeleteClaim("idp");
         opt.Scope.Add("roles");
         opt.ClaimActions.MapJsonKey("role", "role");
-        opt.TokenValidationParameters = new ()
+        opt.TokenValidationParameters = new()
         {
             NameClaimType = "given_name",
             RoleClaimType = "role"
