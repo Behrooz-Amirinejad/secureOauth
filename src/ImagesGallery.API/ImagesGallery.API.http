@@ -1,0 +1,14 @@
+@ImagesGallery.API_HostAddress = https://localhost:7075
+
+GET {{ImagesGallery.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{ImagesGallery.API_HostAddress}}/api/images
+
+###
+
+GET {{ImagesGallery.API_HostAddress}}/api/images
+
+###
